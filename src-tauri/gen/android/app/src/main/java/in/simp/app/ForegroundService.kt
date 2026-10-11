@@ -30,7 +30,7 @@ import androidx.core.content.ContextCompat
 class ForegroundService : Service() {
 
     companion object {
-        const val CHANNEL_ID = "bestie_foreground"
+        const val CHANNEL_ID = "simpchat_foreground"
         const val NOTIFICATION_ID = 1
         const val PI_WATCHDOG = 10
         const val WATCHDOG_INTERVAL_MS = 15 * 60 * 1000L // 15 minutes
@@ -189,7 +189,7 @@ class ForegroundService : Service() {
                 "Background service",
                 NotificationManager.IMPORTANCE_LOW // visible icon, no sound — appropriate for IM
             ).apply {
-                description = "Shown when Bestie keeps the Matrix connection alive. " +
+                description = "Shown when SIMP.Chat keeps the Matrix connection alive. " +
                     "Disable this channel in system settings to hide the notification."
                 setShowBadge(false)
             }
@@ -210,7 +210,7 @@ class ForegroundService : Service() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val n = Notification.Builder(this, CHANNEL_ID)
-                .setContentTitle("Bestie")
+                .setContentTitle("SIMP.Chat")
                 .setContentText("Connected to Matrix")
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
                 .setOngoing(true)
@@ -223,7 +223,7 @@ class ForegroundService : Service() {
         } else {
             @Suppress("DEPRECATION")
             val n = Notification.Builder(this)
-                .setContentTitle("Bestie")
+                .setContentTitle("SIMP.Chat")
                 .setContentText("Connected to Matrix")
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
                 .setOngoing(true)

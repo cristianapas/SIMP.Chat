@@ -142,7 +142,7 @@ class CustomCssEditorPlugin(private val activity: Activity) : Plugin(activity) {
                     invoke.reject("no installed app can edit text files", "NO_EDITOR")
                     return@runOnUiThread
                 }
-                val chooser = Intent.createChooser(target, "Edit Bestie CSS with").apply {
+                val chooser = Intent.createChooser(target, "Edit SIMP.Chat CSS with").apply {
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                     clipData = target.clipData
                 }

@@ -32,9 +32,9 @@
     ],
     "resources": [],
     "externalBin": [],
-    "copyright": "Bestie - AGPL-3.0-only",
+    "copyright": "SIMP.Chat - AGPL-3.0-only",
     "category": "SocialNetworking",
-    "shortDescription": "Yet another matrix client",
+    "shortDescription": "Cliente Matrix SIMP.Chat",
     "longDescription": "",
     "macOS": {
       "frameworks": [],
@@ -52,15 +52,15 @@
     "createUpdaterArtifacts": false
   },
   "build": {
-    "beforeBuildCommand": "node scripts/check-secrets-perms.mjs && node scripts/bump-version.mjs && node scripts/rename-bestie.mjs && node scripts/patch-all-translations.mjs && cd cinny && npm run build",
+    "beforeBuildCommand": "node scripts/check-secrets-perms.mjs && node scripts/bump-version.mjs && node scripts/rename-simp.mjs && node scripts/patch-all-translations.mjs && cd cinny && npm run build",
     "frontendDist": "../cinny/dist",
     "beforeDevCommand": "cd cinny && npm start",
     "devUrl": "http://localhost:8080"
   },
-  "productName": "Bestie",
-  "mainBinaryName": "bestie",
+  "productName": "SIMP.Chat",
+  "mainBinaryName": "simp-chat",
   "version": "4.11.11",
-  "identifier": "in.bestie.app",
+  "identifier": "ar.gov.mpba.simp.chat",
   "plugins": {
     "updater": {
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDdGMzdFQTU4RjY0NkMyNjAKUldSZ3drYjJXT28zZnlkR2VrcnVIUDc1dmZaYXBFc21PQkduNUtIRENXMEhRTzFXVWhPWmdMMUYK",
@@ -70,7 +70,7 @@
       "desktop": {
         "schemes": [
           "matrix",
-          "bestie"
+          "simpchat"
         ]
       }
     }

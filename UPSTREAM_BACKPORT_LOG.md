@@ -1,7 +1,7 @@
 # prinny-client Upstream Backport Log
 
 Tracks upstream `cinnyapp/cinny-desktop` commits reviewed for this fork
-(`cristianapas/Bestie`, branch `main`).
+(`cristianapas/SIMP.Chat`, branch `main`).
 
 The cinny **submodule** has its own log — `cinny/UPSTREAM_BACKPORT_LOG.md`. This
 file covers the Tauri desktop shell only.

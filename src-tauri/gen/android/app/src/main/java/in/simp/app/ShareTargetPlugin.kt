@@ -26,7 +26,7 @@ class ReadSharedFileArgs {
  * Android share-sheet target.
  *
  * MainActivity carries `ACTION_SEND` / `ACTION_SEND_MULTIPLE` intent filters,
- * so Bestie appears in the system share sheet of every other app. This plugin
+ * so SIMP.Chat appears in the system share sheet of every other app. This plugin
  * is the bridge from the intent Android delivers to the frontend, which shows
  * a room picker and drops the shared text/files into that room's composer.
  *

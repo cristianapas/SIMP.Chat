@@ -55,7 +55,7 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.bestie"
+        android:theme="@style/Theme.simpchat"
         android:allowBackup="false"
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="${usesCleartextTraffic}">
@@ -106,13 +106,13 @@
                 <data android:scheme="prinny" />
             </intent-filter>
 
-            <!-- System share sheet. These are what put Bestie in the "Share"
+            <!-- System share sheet. These are what put SIMP.Chat in the "Share"
                  list of every other app on the device; MainActivity turns the
                  intent into a payload and ShareTargetPlugin hands it to the
                  frontend, which opens a room picker.
 
                  `*/*` rather than an enumerated list: a Matrix room accepts any
-                 file, so narrowing the list only means Bestie is missing from
+                 file, so narrowing the list only means SIMP.Chat is missing from
                  the sheet for whatever was left out. text/plain is declared
                  separately because a text share carries no stream at all and
                  some senders match the filter literally.

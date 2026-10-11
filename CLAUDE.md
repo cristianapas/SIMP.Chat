@@ -1,9 +1,9 @@
 # prinny-client
 
-Bestie Matrix client packaged as a desktop app via Tauri v2. Cross-compiles to Windows from Linux using the GNU toolchain.
+SIMP.Chat Matrix client packaged as a desktop app via Tauri v2. Cross-compiles to Windows from Linux using the GNU toolchain.
 
 **Repos:**
-- Desktop shell: `cristianapas/Bestie` (this repo)
+- Desktop shell: `cristianapas/SIMP.Chat` (this repo)
 - Frontend (submodule): `coffeegrind123/prinny` branch `main`
 
 > **🚫 Never build Android locally.** No `tauri android build`, no `gradlew`
@@ -13,7 +13,7 @@ Bestie Matrix client packaged as a desktop app via Tauri v2. Cross-compiles to W
 ## Workspace directory: `prinny-mono/prinny-desktop`, not `prinny-client`
 
 The checkout lives at `~/prinny-mono/prinny-desktop` even though the GitHub repo
-is `cristianapas/Bestie`. That is not a preference — **the path
+is `cristianapas/SIMP.Chat`. That is not a preference — **the path
 `~/prinny-mono/prinny-client` is permanently unusable from inside the
 container**, and the rename is the fix.
 
@@ -128,7 +128,7 @@ The workflow lives at `cinny/.github/workflows/publish-webapp.yml`. It runs `npm
 ## Fresh clone & build
 
 ```bash
-git clone --recursive https://github.com/cristianapas/Bestie.git
+git clone --recursive https://github.com/cristianapas/SIMP.Chat.git
 cd prinny-client
 
 # Ensure submodule is on our branch
@@ -315,7 +315,7 @@ the *first* instance and does `show()` → `unminimize()` → `set_focus()`.
 **2. Two taskbar buttons.** Windows groups taskbar buttons by
 **AppUserModelID**. A process that never sets one gets a per-executable default
 that does not match the AUMID the NSIS installer stamped on the shortcut, so a
-pinned Bestie and a running Bestie were two separate buttons. `lib.rs` now calls
+pinned SIMP.Chat and a running SIMP.Chat were two separate buttons. `lib.rs` now calls
 `SetCurrentProcessExplicitAppUserModelID` with `context.config().identifier`
 (`in.prinny.app`) before any window exists.
 
@@ -561,7 +561,7 @@ The old CI ran `keytool -genkeypair` in the Sign APK step, minting a **fresh ran
 
 `prinny-ci.keystore` (alias `prinny`, store/key pass `prinny-updater`, both published in this repo) was committed to a **public** repository. Treat it as belonging to everyone:
 
-- **Anyone can sign an APK with it.** Android's update rule is "same signing key = same app", so a third-party APK signed with this key installs *over* a user's Bestie install as a silent in-place update, inheriting its data and permissions. That is the whole threat, and it applies to every device that ever installed a `prinny-ci.keystore`-signed build.
+- **Anyone can sign an APK with it.** Android's update rule is "same signing key = same app", so a third-party APK signed with this key installs *over* a user's SIMP.Chat install as a silent in-place update, inheriting its data and permissions. That is the whole threat, and it applies to every device that ever installed a `prinny-ci.keystore`-signed build.
 - **Deleting the file does not undo it.** The key remains in git history and in every already-published GitHub release. History is deliberately *not* rewritten — rewriting would break every fork/clone and would not un-publish what has been downloadable for months. The only real remediation is rotation.
 - **Rotating forces exactly one manual reinstall for every existing Android user.** Their installed app was signed with the old key; Android refuses any update signed by a different key (`INSTALL_FAILED_UPDATE_INCOMPATIBLE` — "App not installed"). Users must uninstall and install the new APK once. Unavoidable, and the same caveat as rotating the desktop minisign keypair. Announce it in the changelog/release notes.
 - Never reuse the old key "just for continuity". Continuity is worth less than a signing key the public holds.
@@ -582,7 +582,7 @@ Generate a fresh release key locally, keep it offline (a password manager / hard
 keytool -genkeypair -v \
   -keystore prinny-release.keystore -alias <alias> \
   -keyalg RSA -keysize 4096 -validity 10000 \
-  -dname "CN=Bestie Client,O=Bestie,C=FI" \
+  -dname "CN=SIMP.Chat Client,O=SIMP.Chat,C=FI" \
   -storepass "<strong-pass>" -keypass "<strong-pass>"
 base64 -w0 prinny-release.keystore   # -> ANDROID_KEYSTORE_BASE64
 ```
@@ -636,7 +636,7 @@ JS: startForegroundService()
   → plugin:foreground|start_foreground
   → ForegroundServicePlugin.kt (Tauri plugin)
   → ForegroundService.kt (Android Service with startForeground())
-  → Persistent notification "Bestie - Connected to Matrix"
+  → Persistent notification "SIMP.Chat - Connected to Matrix"
 ```
 
 **Startup:** The foreground service starts automatically in `useUnifiedPush.ts` when the Matrix client connects. On cleanup (client stop), it stops the service.
@@ -651,7 +651,7 @@ JS: startForegroundService()
 |------|------|
 | `ForegroundService.kt` | Android Service, creates notification channel, calls `startForeground()` |
 | `ForegroundServicePlugin.kt` | Tauri plugin with `startForeground`/`stopForeground`/`isForegroundRunning` commands |
-| `ForegroundService.kt` notification channel | `bestie_foreground`, IMPORTANCE_LOW, no badge |
+| `ForegroundService.kt` notification channel | `simpchat_foreground`, IMPORTANCE_LOW, no badge |
 
 **To disable:** Remove `await startForegroundService()` from `useUnifiedPush.ts:67`. Users with FCM don't need it.
 
@@ -797,15 +797,15 @@ consumers.
    shortcut carries. That AUMID is load-bearing here — see "Windows: single
    instance and the taskbar AppUserModelID" above. `lib.rs` calls
    `SetCurrentProcessExplicitAppUserModelID` with the bundle identifier so a
-   pinned and a running Bestie are one taskbar button, and
+   pinned and a running SIMP.Chat are one taskbar button, and
    `send_windows_message_toast` passes the same identifier to `Toast::new`.
    Windows **silently drops** a toast whose AUMID does not match a registered
    shortcut, so a shortcut lost to an MSI reinstall takes desktop
    notifications with it and reports no error anywhere.
 2. **The MSI was never rebranded.** `src-tauri/wix/banner.bmp` and
-   `dialogImage.bmp` are still upstream Bestie artwork — blue `#2A62A6` and the
-   Bestie bird — so anyone who installed the `.msi` got a Bestie-branded
-   installer for a product called Bestie.
+   `dialogImage.bmp` are still upstream SIMP.Chat artwork — blue `#2A62A6` and the
+   SIMP.Chat bird — so anyone who installed the `.msi` got a SIMP.Chat-branded
+   installer for a product called SIMP.Chat.
 3. It cost a WiX toolchain download plus an extra bundle pass on every Windows
    build.
 
@@ -828,7 +828,7 @@ runs minimatch with `nocomment: true`). The `bundle.windows.wix` block and
 | `headerImage` | `src-tauri/nsis/header.bmp` | **150 × 57**, 24-bit BMP |
 | `sidebarImage` | `src-tauri/nsis/sidebar.bmp` | **164 × 314**, 24-bit BMP — Welcome + Finish pages |
 
-`bundle.copyright` is also now set (`"Bestie - AGPL-3.0-only"`). Tauri's NSIS
+`bundle.copyright` is also now set (`"SIMP.Chat - AGPL-3.0-only"`). Tauri's NSIS
 template does `BrandingText "${COPYRIGHT}"`, and NSIS renders an **empty**
 `BrandingText` as its own default — so with `copyright: ""` the installer
 footer read *"Nullsoft Install System v3.x"*. The same string lands in the

@@ -8,7 +8,7 @@ app CSS  ->  overrides (from the edited full file)  ->  snippets (settings box, 
 ```
 
 The settings box stays empty by default and holds snippets. The full stylesheet
-is edited outside the app: **Edit in Text Editor** hands the user Bestie's
+is edited outside the app: **Edit in Text Editor** hands the user SIMP.Chat's
 complete CSS (~0.3 MB, ~8k lines, with the user's changes merged in) and every
 save is imported.
 

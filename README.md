@@ -1,18 +1,18 @@
-# Bestie Client <img align="right" width="100" height="100" src="src-tauri/icons/bestie-logo.png" alt="Bestie" />
+# SIMP.Chat Client <img align="right" width="100" height="100" src="src-tauri/icons/simp-logo.png" alt="SIMP.Chat" />
 
-[![Build](https://github.com/cristianapas/Bestie/actions/workflows/build.yml/badge.svg)](https://github.com/cristianapas/Bestie/actions/workflows/build.yml)
-[![Latest](https://img.shields.io/github/v/release/cristianapas/Bestie?label=latest)](https://github.com/cristianapas/Bestie/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/cristianapas/Bestie/total?label=downloads)](https://github.com/cristianapas/Bestie/releases)
+[![Build](https://github.com/cristianapas/SIMP.Chat/actions/workflows/build.yml/badge.svg)](https://github.com/cristianapas/SIMP.Chat/actions/workflows/build.yml)
+[![Latest](https://img.shields.io/github/v/release/cristianapas/SIMP.Chat?label=latest)](https://github.com/cristianapas/SIMP.Chat/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/cristianapas/SIMP.Chat/total?label=downloads)](https://github.com/cristianapas/SIMP.Chat/releases)
 
 Cliente Matrix rápido, moderno y amigable, con servidor por defecto `chat.mpba.gov.ar` y soporte completo en español.
 
 ## Descarga
 
-Todos los instaladores y versiones están disponibles en [GitHub Releases](https://github.com/cristianapas/Bestie/releases).
+Todos los instaladores y versiones están disponibles en [GitHub Releases](https://github.com/cristianapas/SIMP.Chat/releases).
 
 | Plataforma | Descarga |
 |------------|----------|
-| Windows | [Bestie_4.11.11_x64-setup.exe](https://github.com/cristianapas/Bestie/releases/latest/download/Bestie_4.11.11_x64-setup.exe) |
+| Windows | [SIMP.Chat_4.11.11_x64-setup.exe](https://github.com/cristianapas/SIMP.Chat/releases/latest/download/SIMP.Chat_4.11.11_x64-setup.exe) |
 
 There is one Windows installer on purpose. Windows ties toast notifications and the
 taskbar button to the AppUserModelID carried by the Start Menu shortcut, so a build
@@ -31,11 +31,11 @@ Desktop builds update themselves via `release.json`. Android checks on launch an
 
 Two ways, pick whichever matches how you deploy.
 
-**Option A — Tagged zip.** Grab `prinny-webapp.zip` from the [latest release](https://github.com/cristianapas/Bestie/releases/latest), unzip somewhere your webserver serves, point at the `dist/` directory inside. One-shot upload; re-download on each release.
+**Option A — Tagged zip.** Grab `prinny-webapp.zip` from the [latest release](https://github.com/cristianapas/SIMP.Chat/releases/latest), unzip somewhere your webserver serves, point at the `dist/` directory inside. One-shot upload; re-download on each release.
 
 ```bash
 curl -L -o prinny-webapp.zip \
-  https://github.com/cristianapas/Bestie/releases/latest/download/prinny-webapp.zip
+  https://github.com/cristianapas/SIMP.Chat/releases/latest/download/prinny-webapp.zip
 unzip prinny-webapp.zip -d /usr/share/webapps/prinny   # extracts to /usr/share/webapps/prinny/dist
 ```
 
@@ -50,7 +50,7 @@ The `webapp-release` branch ships its own `nginx.conf` and `README.md` covering 
 
 ## Features
 
-Everything below is what this fork adds on top of upstream [Bestie](https://cinny.in). Bestie itself already has a markdown editor, message layouts, slash commands, themes, quick switcher, and standard Matrix client features. These are the additions.
+Everything below is what this fork adds on top of upstream [SIMP.Chat](https://cinny.in). SIMP.Chat itself already has a markdown editor, message layouts, slash commands, themes, quick switcher, and standard Matrix client features. These are the additions.
 
 ### Desktop notifications
 
@@ -79,7 +79,7 @@ Everything below is what this fork adds on top of upstream [Bestie](https://cinn
 | Reply highlights | Yellow left border + amber background when someone replies to your message |
 | Timestamp position | Discord-style: timestamp next to username, `@user:server` on right only on hover (Modern layout) |
 | NEW badge | Right-aligned green "NEW" badge with full-width green line divider (Discord-style) |
-| Read receipts | Two modes (Settings → General → Read Receipt Style): Bestie default shows "is following the conversation" text live, Element-style shows tiny avatar dots at each person's last-read position |
+| Read receipts | Two modes (Settings → General → Read Receipt Style): SIMP.Chat default shows "is following the conversation" text live, Element-style shows tiny avatar dots at each person's last-read position |
 | Mark as Unread | Right-click any message → sets read marker to previous event. Room gets unread badge, green NEW line at marked position |
 
 ### Sidebar and navigation
@@ -138,10 +138,10 @@ Everything below is what this fork adds on top of upstream [Bestie](https://cinn
 
 | Feature | Description |
 |---------|-------------|
-| Bestie panic face | All 17 desktop icons (ICO, PNG, ICNS), favicon SVGs replaced |
-| Build-time rename | `scripts/rename-prinny.mjs` via `beforeBuildCommand`: Bestie→Bestie across all source (Rust, Kotlin, TSX, JSON, XML, HTML, SVG) |
+| SIMP.Chat panic face | All 17 desktop icons (ICO, PNG, ICNS), favicon SVGs replaced |
+| Build-time rename | `scripts/rename-prinny.mjs` via `beforeBuildCommand`: SIMP.Chat→SIMP.Chat across all source (Rust, Kotlin, TSX, JSON, XML, HTML, SVG) |
 | Android package | `in.prinny.app` — directory, namespace, applicationId, Kotlin packages all consistent |
-| About page | 96px Bestie logo, dynamic version from `package.json`, links to our repos |
+| About page | 96px SIMP.Chat logo, dynamic version from `package.json`, links to our repos |
 | Release assets | All CI artifacts named `Prinny_desktop-*` / `prinny-android-*` |
 
 ### Build and CI
@@ -159,7 +159,7 @@ Everything below is what this fork adds on top of upstream [Bestie](https://cinn
 You need Rust, Node.js 16+, and platform dev tools. Clone with submodules:
 
 ```bash
-git clone --recursive https://github.com/cristianapas/Bestie.git
+git clone --recursive https://github.com/cristianapas/SIMP.Chat.git
 cd prinny-client
 cd cinny && git checkout main && npm ci && cd ..
 npm ci

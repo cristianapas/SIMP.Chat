@@ -1,4 +1,4 @@
-# Element ↔ Bestie feature gap analysis
+# Element ↔ SIMP.Chat feature gap analysis
 
 **Compared:** `element-hq/element-web` @ `7711207` (web app version 1.12.25, 2026-08-11, shallow
 clone at `~/element-web`) against `coffeegrind123/prinny` @ `fcecd833` (version 4.11.10) as vendored
@@ -40,7 +40,7 @@ Everything else is enumerated below by area.
 
 ## A. Composer and sending
 
-| Feature | Element | Bestie | Verdict |
+| Feature | Element | SIMP.Chat | Verdict |
 |---|---|---|---|
 | Voice messages | `audio/VoiceRecording.ts`, `audio/VoiceMessageRecording.ts`, `components/views/rooms/VoiceRecordComposerTile.tsx`, `utils/createVoiceMessageContent.ts` | — | **missing** (see appendix) |
 | Polls | `components/views/elements/PollCreateDialog.tsx`, `components/views/messages/MPollBody.tsx`, `PollHistoryDialog` | — | **missing** — no `m.poll.start` anywhere |
@@ -56,7 +56,7 @@ Everything else is enumerated below by area.
 
 ## B. Timeline and message actions
 
-| Feature | Element | Bestie | Verdict |
+| Feature | Element | SIMP.Chat | Verdict |
 |---|---|---|---|
 | Forward message | `ForwardDialog.tsx` (room picker + preview) | — | **missing** |
 | Edit history | `MessageEditHistoryDialog.tsx`, `utils/MessageDiffUtils.tsx` (word diff) | — | **missing** |
@@ -65,7 +65,7 @@ Everything else is enumerated below by area.
 | Report room / report user | `ReportRoomDialog.tsx`, user-info report | — | missing |
 | Bulk redact ("remove recent messages" for a user) | `BulkRedactDialog.tsx` | — | missing (moderation) |
 | View source | yes | yes | parity |
-| Read receipts | avatar row | both styles (ours has a Bestie/Element toggle) | **ours is ahead** |
+| Read receipts | avatar row | both styles (ours has a SIMP.Chat/Element toggle) | **ours is ahead** |
 | Chat effects (`/confetti`, snowfall, fireworks, hearts, rainfall, spaceinvaders) | `effects/` | — | missing (fun, cheap) |
 | Big emoji, autoplay gif/video toggles, code line numbers, syntax highlight detection | settings toggles | partially (media autoload) | minor |
 | Jump to date (MSC3030) | labs `feature_jump_to_date` | shipped: `features/room/jump-to-time/` | **ours is ahead** |
@@ -88,7 +88,7 @@ that will keep biting as more of the ecosystem uses threads by default.
 
 ## D. Rooms, spaces, moderation
 
-| Feature | Element | Bestie | Verdict |
+| Feature | Element | SIMP.Chat | Verdict |
 |---|---|---|---|
 | Knock / ask-to-join management | `components/views/rooms/RoomKnocksBar.tsx` + labs `feature_ask_to_join` | join-rule switch only (`JoinRulesSwitcher.tsx`) | **missing** the approval UI |
 | Room upgrade | `RoomUpgradeDialog`, `RoomUpgradeWarningBar` | `common-settings/general/RoomUpgrade.tsx` + `RoomTombstone` | parity |
@@ -137,7 +137,7 @@ and (in principle) screen share come from EC itself. Element additionally has:
 
 ## F. Search and data
 
-| Feature | Element | Bestie | Verdict |
+| Feature | Element | SIMP.Chat | Verdict |
 |---|---|---|---|
 | Server-side search | yes | yes | parity |
 | Encrypted-room search | Seshat native index on desktop (`apps/desktop/src/seshat.ts`, `EventIndexPanel.tsx`); **web has none** | live client-side streaming search (`features/message-search/RoomMessageResults.tsx:73`) | **ours is ahead on web/mobile**, behind on desktop (no persistent index → slow on big rooms) |
@@ -147,7 +147,7 @@ and (in principle) screen share come from EC itself. Element additionally has:
 
 ## G. Account, security, sessions
 
-| Feature | Element | Bestie | Verdict |
+| Feature | Element | SIMP.Chat | Verdict |
 |---|---|---|---|
 | Change password (logged in) | `ChangePassword.tsx` | — (reset only, from the login screen) | **missing** |
 | Deactivate account | `DeactivateAccountDialog.tsx` | — | **missing** |
@@ -165,7 +165,7 @@ and (in principle) screen share come from EC itself. Element additionally has:
 
 ## H. Desktop shell (Electron vs Tauri)
 
-| Feature | Element desktop | Bestie (Tauri) | Verdict |
+| Feature | Element desktop | SIMP.Chat (Tauri) | Verdict |
 |---|---|---|---|
 | Tray, window state, single instance, badge/overlay | yes | yes | parity (ours has Windows `SetOverlayIcon`) |
 | Auto-updater | yes | yes (`release.json`) | parity |
@@ -190,7 +190,7 @@ and (in principle) screen share come from EC itself. Element additionally has:
 - **Module API (`@matrix-org/react-sdk-module-api`)** — an enterprise extension point.
 - **Release announcements / user onboarding checklists** — product surface for a mass-market app.
 
-## J. Where Bestie is already ahead (don't regress these)
+## J. Where SIMP.Chat is already ahead (don't regress these)
 
 Public server directory + homeserver autocomplete; hCaptcha/registration fallback; client-side
 encrypted search; configurable keybinds with a `Ctrl+/` panel; jump-to-date shipped (labs in
@@ -285,7 +285,7 @@ Our upload pipeline already does everything except produce the blob:
 
 - Record → preview → send in an unencrypted **and** an encrypted room, on desktop and Android.
 - The event carries all five MSC keys; Element Web renders it as a voice message with our waveform.
-- Voice messages sent from Element render in Bestie with waveform, duration and seek.
+- Voice messages sent from Element render in SIMP.Chat with waveform, duration and seek.
 - Cancel mid-recording releases the mic (no lingering capture indicator / no lingering Android
   foreground-service mic type).
 - Recording stops and uploads cleanly when the app is backgrounded on Android.

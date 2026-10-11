@@ -32,7 +32,7 @@ class MainActivity : TauriActivity() {
      * `OnBackPressedCallback` that calls `webView.goBack()` while there is
      * history and otherwise falls through to the default (leave the app). Its
      * own default for the flag is `true` — it is Tauri's generated
-     * `TauriActivity` that turns it off, so every Bestie build shipped with
+     * `TauriActivity` that turns it off, so every SIMP.Chat build shipped with
      * Back meaning "close the app" from anywhere, including from a room you had
      * just opened.
      *

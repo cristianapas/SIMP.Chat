@@ -40,7 +40,7 @@ class ShowMessageNotificationArgs {
 class MessageNotificationPlugin(private val activity: Activity) : Plugin(activity) {
     companion object {
         private const val TAG = "MessageNotification"
-        const val CHANNEL_ID = "bestie_messages"
+        const val CHANNEL_ID = "simpchat_messages"
         private var nextId = 1000
 
         // Singleton handle so MainActivity.onNewIntent / onCreate can hand

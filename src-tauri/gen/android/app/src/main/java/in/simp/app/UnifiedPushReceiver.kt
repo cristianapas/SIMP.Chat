@@ -27,7 +27,7 @@ class UnifiedPushReceiver : MessagingReceiver() {
          * The SAME channel the in-app path posts on
          * (`MessageNotificationPlugin.CHANNEL_ID`).
          *
-         * It used to be a second channel, `bestie_messages`, which gave Android
+         * It used to be a second channel, `simpchat_messages`, which gave Android
          * settings two entries both called "Messages" — so silencing the one
          * you could see left the other one ringing, and the sound/importance a
          * user chose applied to only half their notifications.
@@ -79,7 +79,7 @@ class UnifiedPushReceiver : MessagingReceiver() {
     )
 
     private fun parsePush(raw: String): PushSummary {
-        val fallback = PushSummary("Bestie", "New message", null, null, null, null)
+        val fallback = PushSummary("SIMP.Chat", "New message", null, null, null, null)
         return try {
             val notification = JSONObject(raw).optJSONObject("notification") ?: return fallback
             val roomId = notification.optString("room_id", "").ifEmpty { null }
@@ -95,7 +95,7 @@ class UnifiedPushReceiver : MessagingReceiver() {
                 sender.isNotEmpty() && roomName.isNotEmpty() && roomName != sender -> "$sender ($roomName)"
                 sender.isNotEmpty() -> sender
                 roomName.isNotEmpty() -> roomName
-                else -> "Bestie"
+                else -> "SIMP.Chat"
             }
 
             val content = notification.optJSONObject("content")

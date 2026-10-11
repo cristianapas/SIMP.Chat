@@ -52,7 +52,7 @@ class UpdateChecker(private val context: Context) {
     companion object {
         private const val TAG = "UpdateChecker"
         private const val RELEASE_JSON_URL =
-            "https://github.com/cristianapas/Bestie/releases/download/tauri/release.json"
+            "https://github.com/cristianapas/SIMP.Chat/releases/download/tauri/release.json"
         private const val PREFS = "prinny_updater"
         private const val KEY_LAST_DL_ID = "last_download_id"
         private const val KEY_LAST_DL_VERSION = "last_download_version"
@@ -192,7 +192,7 @@ class UpdateChecker(private val context: Context) {
         return false
     }
 
-    private fun apkName(version: String): String = "bestie-v$version.apk"
+    private fun apkName(version: String): String = "simp-chat-v$version.apk"
 
     /**
      * Staging directory for the update APK: app-private external storage
@@ -359,7 +359,7 @@ class UpdateChecker(private val context: Context) {
         if (file.exists() && file.length() == 0L) file.delete()
 
         val request = DownloadManager.Request(parsed)
-            .setTitle("Bestie v$version")
+            .setTitle("SIMP.Chat v$version")
             .setDescription("Downloading update...")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             // App-private external files dir — see apkDir(). The public

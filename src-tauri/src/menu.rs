@@ -2,7 +2,7 @@ use tauri::menu::{MenuBuilder, SubmenuBuilder};
 use tauri::AppHandle;
 
 pub fn menu() -> tauri::menu::Menu {
-    let app_menu = SubmenuBuilder::new(app, "Bestie")
+    let app_menu = SubmenuBuilder::new(app, "SIMP.Chat")
         .about(Some(Default::default()))
         .separator()
         .hide()

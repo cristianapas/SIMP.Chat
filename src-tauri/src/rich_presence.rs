@@ -123,7 +123,7 @@ mod imp {
                     "id": "1045800378228281345",
                     "username": "prinny",
                     "discriminator": "0",
-                    "global_name": "Bestie",
+                    "global_name": "SIMP.Chat",
                     "avatar": null,
                     "avatar_decoration_data": null,
                     "bot": false,

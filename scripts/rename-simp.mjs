@@ -1,8 +1,8 @@
 /**
- * Pre-build: rename Cinny / Prinny → Bestie across the entire project.
+ * Pre-build: rename Cinny / Prinny / Bestie → SIMP.Chat across the entire project.
  *
  * Runs as beforeBuildCommand. Modifies source in-place so the Tauri build
- * compiles with "Bestie" branding. Also renames Android package directory.
+ * compiles with "SIMP.Chat" branding. Also renames Android package directory.
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync, renameSync, unlinkSync } from 'node:fs';
 import { join, extname, relative, dirname } from 'node:path';
@@ -37,14 +37,18 @@ function renameAndroidPackageDir() {
   const javaRoot = join(ROOT, 'src-tauri', 'gen', 'android', 'app', 'src', 'main', 'java', 'in');
   const oldDirCinny = join(javaRoot, 'cinny');
   const oldDirPrinny = join(javaRoot, 'prinny');
-  const newDir = join(javaRoot, 'bestie');
+  const oldDirBestie = join(javaRoot, 'bestie');
+  const newDir = join(javaRoot, 'simp');
   
-  if (existsSync(oldDirCinny) && !existsSync(newDir)) {
+  if (existsSync(oldDirBestie) && !existsSync(newDir)) {
+    renameSync(oldDirBestie, newDir);
+    console.log(`  [dir] in/bestie → in/simp`);
+  } else if (existsSync(oldDirCinny) && !existsSync(newDir)) {
     renameSync(oldDirCinny, newDir);
-    console.log(`  [dir] in/cinny → in/bestie`);
+    console.log(`  [dir] in/cinny → in/simp`);
   } else if (existsSync(oldDirPrinny) && !existsSync(newDir)) {
     renameSync(oldDirPrinny, newDir);
-    console.log(`  [dir] in/prinny → in/bestie`);
+    console.log(`  [dir] in/prinny → in/simp`);
   }
   
   // Remove stale assets tauri.conf.json so it's regenerated fresh
@@ -65,29 +69,36 @@ function replaceInFile(filePath) {
 
     // Repo URLs
     content = content.replace(
-      /(coffeegrind123\/cinny-desktop|coffeegrind123\/prinny-client|cristianapas\/prinny-client)/g,
-      'cristianapas/Bestie'
+      /(coffeegrind123\/cinny-desktop|coffeegrind123\/prinny-client|cristianapas\/prinny-client|cristianapas\/Bestie)/g,
+      'cristianapas/SIMP.Chat'
     );
 
     // Android notification channel IDs
-    content = content.replace(/\b(cinny|prinny)_foreground\b/g, 'bestie_foreground');
-    content = content.replace(/\b(cinny|prinny)_messages\b/g, 'bestie_messages');
+    content = content.replace(/\b(cinny|prinny|bestie)_foreground\b/g, 'simpchat_foreground');
+    content = content.replace(/\b(cinny|prinny|bestie)_messages\b/g, 'simpchat_messages');
 
     // Android theme
-    content = content.replace(/Theme\.(cinny|prinny)\b/g, 'Theme.bestie');
+    content = content.replace(/Theme\.(cinny|prinny|bestie)\b/g, 'Theme.simpchat');
 
     // Kotlin APK filename
-    content = content.replace(/"(cinny|prinny)-v\$/g, '"bestie-v$');
+    content = content.replace(/"(cinny|prinny|bestie)-v\$/g, '"simp-chat-v$');
+
+    // SVGs
+    content = content.replace(/bestie\.svg/g, 'simp.svg');
+    content = content.replace(/bestie-unread\.svg/g, 'simp-unread.svg');
+    content = content.replace(/bestie-highlight\.svg/g, 'simp-highlight.svg');
 
     // Tauri config
-    content = content.replace(/"productName"\s*:\s*"(Cinny|Prinny)"/g, '"productName": "Bestie"');
-    content = content.replace(/"mainBinaryName"\s*:\s*"(cinny|prinny)"/g, '"mainBinaryName": "bestie"');
+    content = content.replace(/"productName"\s*:\s*"(Cinny|Prinny|Bestie)"/g, '"productName": "SIMP.Chat"');
+    content = content.replace(/"mainBinaryName"\s*:\s*"(cinny|prinny|bestie)"/g, '"mainBinaryName": "simp-chat"');
 
     // General case-sensitive replacements
-    content = content.replace(/\bPrinny\b/g, 'Bestie');
-    content = content.replace(/\bPRINNY\b/g, 'BESTIE');
-    content = content.replace(/\bCinny\b/g, 'Bestie');
-    content = content.replace(/\bCINNY\b/g, 'BESTIE');
+    content = content.replace(/\bBestie\b/g, 'SIMP.Chat');
+    content = content.replace(/\bBESTIE\b/g, 'SIMP.CHAT');
+    content = content.replace(/\bPrinny\b/g, 'SIMP.Chat');
+    content = content.replace(/\bPRINNY\b/g, 'SIMP.CHAT');
+    content = content.replace(/\bCinny\b/g, 'SIMP.Chat');
+    content = content.replace(/\bCINNY\b/g, 'SIMP.CHAT');
 
     if (content !== original) {
       writeFileSync(filePath, content, 'utf8');
@@ -126,7 +137,7 @@ function walk(dir) {
 
 // ── Main ────────────────────────────────────────────────────────────
 
-console.log('[bestie] Renaming to Bestie...');
+console.log('[simp] Renaming to SIMP.Chat...');
 renameAndroidPackageDir();
 const changed = walk(ROOT);
-console.log(`[bestie] Done — ${changed} files changed.`);
+console.log(`[simp] Done — ${changed} files changed.`);
