@@ -637,7 +637,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload to release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -753,7 +753,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload to release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -833,7 +833,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload to release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -972,7 +972,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload to release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -1042,7 +1042,7 @@ jobs:
           sha256sum prinny-webapp.zip > prinny-webapp.zip.sha256
           cat prinny-webapp.zip.sha256
       - name: Upload to release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: ${{ needs.create-release.outputs.tag }}
           draft: true
@@ -1077,7 +1077,7 @@ jobs:
           zip ${{ github.event.repository.name }}/${{ github.event.repository.name }}-${{ needs.create-release.outputs.tag }}.zip ${{ github.event.repository.name }} -r \
             -x '*/.git/*' '*/.git'
       - name: Upload to release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: ${{ needs.create-release.outputs.tag }}
           draft: true
