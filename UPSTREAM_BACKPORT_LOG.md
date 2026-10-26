@@ -6,10 +6,37 @@ Tracks upstream `cinnyapp/cinny-desktop` commits reviewed for this fork
 The cinny **submodule** has its own log — `cinny/UPSTREAM_BACKPORT_LOG.md`. This
 file covers the Tauri desktop shell only.
 
-**Last sync:** 2026-09-26 (upstream `main` @ `d3627de`, v4.12.7)
-**Start from:** `d3627de` — next time, fetch upstream and check commits AFTER this one
+**Last sync:** 2026-10-26 (upstream `cinny-desktop` @ `58800607`, v4.12.8 / `prinny-client` @ `037fb0fd`)
+**Start from:** `58800607` (cinny-desktop) / `037fb0fd` (prinny-client)
 
 Status: `[x]` backported · `[-]` skipped · `[~]` partial/adapted · `[ ]` pending
+
+## 2026-10-26 sync session
+
+Sync from `prinny-client` (`d173aefc..037fb0fd`) and `cinny-desktop` (`d3627de..58800607`):
+
+### Desktop shell (`prinny-client` & `cinny-desktop`)
+- `[x]` `9c45fa98`: Restore `opener:allow-open-url` with schemes `http://*`, `https://*`, `mailto:*` in `src-tauri/capabilities/migrated.json` so in-message link clicks open the default system browser instead of failing silently.
+- `[x]` `de65e2ad`: Audit gate fix for new RustSec advisories (RUSTSEC-2026-0367, 0368, 0369 for zip 4.6.1). Bump `quinn-proto` to `0.11.19` and `rustls` to `0.23.46` in `src-tauri/Cargo.lock`.
+- `[x]` `cddd313e`: Bump `undici` to `6.29.1` in `package-lock.json` (Dependabot GHSA-r53p-7pc4-xj5r).
+- `[x]` `065266dc`: Add trusted `wheel` command to CDP live-test driver (`scripts/live-test/cdp.mjs`).
+- `[~]` `58800607`: (upstream `cinny-desktop`) Release v4.12.8 submodule bump.
+- `[-]` `451828d8`: (upstream `cinny-desktop`) Devcontainer config.
+
+### Submodule `cinny` (`ab981e36..822d50e1`)
+- `[x]` `aceab41e`: "Hold a jumped-to message in place until it settles" (prevents reply/permalink jump desync caused by virtual layout / image reflow).
+- `[x]` `4b77cb15`: "Move edit Save/Cancel to the right of the editor" (UX improvement).
+- `[x]` `af623112`: Bump `brace-expansion` to 5.0.12.
+- `[x]` `e4bba776`: Fix 2 npm advisories in production dependencies.
+- `[x]` Synced with upstream `cinnyapp/cinny` up to commit `eff1f48e`.
+
+### SIMP.Chat adaptations
+- Added Spanish translations in `scripts/patch-all-translations.mjs` for:
+  - `MessageEditor.tsx` ("Guardar", "Cancelar", "Editar mensaje...").
+  - `RoomViewHeader.tsx` (Voice/video call start tooltips & LiveKit/MatrixRTC requirement messages).
+  - `CallView.tsx`, `Controls.tsx`, `PrescreenControls.tsx`, `CallControls.tsx`, `CallEmbedProvider.tsx`, `CallChatView.tsx`.
+- Preserved 100% of SIMP.Chat branding, logos (letter 'C'), default server (`https://chat.mpba.gov.ar`) and idempotent patching scripts.
+
 
 ## Why so much is skipped
 

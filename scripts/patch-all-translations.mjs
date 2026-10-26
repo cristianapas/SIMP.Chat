@@ -1500,4 +1500,69 @@ patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'pages', 'client', 'rooms', 'Roo
   (code) => code.replace('You do not have any rooms yet.', 'Aún no tienes ninguna sala.'),
 ]);
 
+// AT. Room / message / MessageEditor.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'room', 'message', 'MessageEditor.tsx'), [
+  (code) => code.replace('placeholder="Edit message..."', 'placeholder="Editar mensaje..."'),
+  (code) => code.replace('<Text size="B300">Cancel</Text>', '<Text size="B300">Cancelar</Text>'),
+  (code) => code.replace('<Text size="B300">Save</Text>', '<Text size="B300">Guardar</Text>'),
+]);
+
+// AU. Room / RoomViewHeader.tsx (Call tooltips)
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'room', 'RoomViewHeader.tsx'), [
+  (code) => code.replace("Already in another call — End the current call to join!", "Ya estás en otra llamada — ¡Finaliza la llamada actual para unirte!"),
+  (code) => code.replace("Your homeserver does not advertise a LiveKit/MatrixRTC focus, so calls cannot be started.", "Tu servidor no anuncia un foco LiveKit/MatrixRTC, por lo que no se pueden iniciar llamadas."),
+  (code) => code.replace("You do not have permission to start a call in this room.", "No tienes permiso para iniciar una llamada en esta sala."),
+  (code) => code.replace("blocker ?? 'Start voice call'", "blocker ?? 'Iniciar llamada de voz'"),
+  (code) => code.replace('aria-label="Start voice call"', 'aria-label="Iniciar llamada de voz"'),
+  (code) => code.replace("blocker ?? 'Start video call'", "blocker ?? 'Iniciar videollamada'"),
+  (code) => code.replace('aria-label="Start video call"', 'aria-label="Iniciar videollamada"'),
+]);
+
+// AV. Features / call / CallView.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'call', 'CallView.tsx'), [
+  (code) => code.replace('Your homeserver does not support calling.', 'Tu servidor no soporta llamadas.'),
+  (code) => code.replace('Your browser does not support WebRTC, which is required for calling.', 'Tu navegador no soporta WebRTC, requerido para realizar llamadas.'),
+  (code) => code.replace('Voice chat’s empty — Be the first to hop in!', 'El chat de voz está vacío — ¡Sé el primero en unirte!'),
+  (code) => code.replace('You don&#39;t have permission to join!', '¡No tienes permiso para unirte!'),
+  (code) => code.replace('Already in another call — End the current call to join!', 'Ya estás en otra llamada — ¡Finaliza la llamada actual para unirte!'),
+  (code) => code.replace('<Text size="L400">Participant</Text>', '<Text size="L400">Participantes</Text>'),
+  (code) => code.replace('{callMembers.length} Live', '{callMembers.length} en vivo'),
+]);
+
+// AW. Features / call / Controls.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'call', 'Controls.tsx'), [
+  (code) => code.replace("enabled ? 'Turn Off Microphone' : 'Turn On Microphone'", "enabled ? 'Desactivar micrófono' : 'Activar micrófono'"),
+  (code) => code.replace("enabled ? 'Turn Off Sound' : 'Turn On Sound'", "enabled ? 'Silenciar sonido' : 'Activar sonido'"),
+  (code) => code.replace("enabled ? 'Stop Camera' : 'Start Camera'", "enabled ? 'Detener cámara' : 'Iniciar cámara'"),
+  (code) => code.replace("enabled ? 'Stop Screenshare' : 'Start Screenshare'", "enabled ? 'Dejar de compartir pantalla' : 'Compartir pantalla'"),
+  (code) => code.replace("chat ? 'Close Chat' : 'Open Chat'", "chat ? 'Cerrar chat' : 'Abrir chat'"),
+]);
+
+// AX. Features / call / PrescreenControls.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'call', 'PrescreenControls.tsx'), [
+  (code) => code.replace('<Text size="B400">Join</Text>', '<Text size="B400">Unirse</Text>'),
+]);
+
+// AY. Features / call / CallControls.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'call', 'CallControls.tsx'), [
+  (code) => code.replace("spotlight ? 'Grid View' : 'Spotlight View'", "spotlight ? 'Vista de cuadrícula' : 'Vista de enfoque'"),
+  (code) => code.replace('<Text size="B300" truncate>\n                          Reactions\n                        </Text>', '<Text size="B300" truncate>\n                          Reacciones\n                        </Text>'),
+  (code) => code.replace('<Text size="B300" truncate>\n                          Settings\n                        </Text>', '<Text size="B300" truncate>\n                          Configuración\n                        </Text>'),
+  (code) => code.replace('<Text size="B400">End</Text>', '<Text size="B400">Finalizar</Text>'),
+]);
+
+// AZ. Components / CallEmbedProvider.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'components', 'CallEmbedProvider.tsx'), [
+  (code) => code.replace('Incoming Call', 'Llamada entrante'),
+  (code) => code.replace('Your homeserver does not support calling.', 'Tu servidor no soporta llamadas.'),
+  (code) => code.replace('Your browser does not support WebRTC, which is required for calling.', 'Tu navegador no soporta WebRTC, requerido para realizar llamadas.'),
+  (code) => code.replace('<Text as="span" size="B400">\n                      Answer\n                    </Text>', '<Text as="span" size="B400">\n                      Responder\n                    </Text>'),
+  (code) => code.replace("dm ? 'Reject' : 'Ignore'", "dm ? 'Rechazar' : 'Ignorar'"),
+]);
+
+// BA. Room / CallChatView.tsx
+patchFile(path.join(FRONTEND_DIR, 'src', 'app', 'features', 'room', 'CallChatView.tsx'), [
+  (code) => code.replace('<Text>Close</Text>', '<Text>Cerrar</Text>'),
+]);
+
 console.log('\n🎉 ¡Parche integral completado con éxito!');
